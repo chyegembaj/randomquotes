@@ -26,7 +26,7 @@ class  App extends Component {
 		})
 		
 		const quotetext = document.getElementById("text");
-		quotetext.innerText = this.state.quote; 
+		quotetext.innerText = this.state.quotes[0].text; 
 		
 
 	}
