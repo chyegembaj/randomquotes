@@ -21,24 +21,26 @@ class  App extends Component {
 		const data = await response.json();
 		
 		this.setState({
-			quotes: data,
-			quote: data[0].text
+			quotes: data
+			
 		})
 		
-		const quotetext = document.getElementById("text");
-		quotetext.innerText = this.state.quotes[0].text; 
-		
+		//const quotetext = document.getElementById("text");
+		//quotetext.innerText = this.state.quotes[0].text; 
+		this.newQuote();
 
 	}
 
-	getRandomQuotes = (event) => {
-		const quoteButton = document.getElementById("quote");
-		quoteButton.addEventListener("click", () => {
+	newQuote = () => {
 		let quoteIndex = Math.floor(Math.random() * this.state.quotes.length)
 		let randomQuote = this.state.quotes[quoteIndex];
 		
 		this.setState({newQuote: randomQuote.text, author: randomQuote.author})
-		});
+	}
+
+	getRandomQuotes = (event) => {
+		const quoteButton = document.getElementById("quote");
+		quoteButton.addEventListener("click", this.newQuote());
 		
 		event.preventDefault();
 	}
