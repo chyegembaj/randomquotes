@@ -27,12 +27,15 @@ h1 {
 #box-content {
 
 	width: 400px;
-	height: 100%;
+	height: 200px;
 	border: 1px solid black;
 	box-sizing: border-box;
+
 }
 
 button {
 	background-color: pink;
+	justify-content: flex-end;
+
 }
 
