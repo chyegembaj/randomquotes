@@ -4,9 +4,7 @@ body {
 	background-color: pink;
 }
 
-* {
-	box-sizing: border-box;
-}
+
 
 
 h1 {
@@ -27,7 +25,7 @@ h1 {
 #box-content {
 
 	width: 400px;
-	height: 200px;
+	height: 100%;
 	border: 1px solid black;
 	box-sizing: border-box;
 
@@ -35,7 +33,7 @@ h1 {
 
 button {
 	background-color: pink;
-	justify-content: flex-end;
+
 
 }
 
