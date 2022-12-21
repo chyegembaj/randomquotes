@@ -8,40 +8,23 @@ class  App extends Component {
 		super(props);
 
 		this.state = {
-			quotes: [],
 			newQuote: '',
 			author: ''
 		}
 	}
 
-	async componentDidMount() {
-		try {
-			const response = await fetch("https://type.fit/api/quotes");
-			const data = await response.json();
-
-			this.setState({
-			quotes: data
-			
-		})
+	componentDidMount() {
 		this.newQuote();
-		
-		}catch(err){
-			console.log(err);
-		}
-		
-		
-
+			
 	}
 
-	newQuote = () => {
-		let quoteIndex = Math.floor(Math.random() * this.state.quotes.length)
-
-		let randomQuote = this.state.quotes[quoteIndex];
-		
-		//const {text, author} = this.state.quotes[quoteIndex];
-		//this.setState({newQuote: text, author: author})
-		console.log(randomQuote.text);
-		this.setState({newQuote: randomQuote.text, author: randomQuote.author})
+	newQuote = async () => {
+		const response = await fetch("https://type.fit/api/quotes");
+		const data = await response.json();
+		let index = Math.floor(Math.random() * data.length);
+		const {text, author} = data[index];
+	
+		this.setState({newQuote: text, author: author})
 	}
 
 	getRandomQuotes = (event) => {
