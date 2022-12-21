@@ -3,38 +3,44 @@ import React, {Component} from "react";
 import "./App.css"
 
 class  App extends Component {
-	constructor() {
-		super();
+
+	constructor(props) {
+		super(props);
 
 		this.state = {
 			quotes: [],
 			newQuote: '',
-			quote: '',
 			author: ''
 		}
-
 	}
 
 	async componentDidMount() {
-		
-		const response = await fetch("https://type.fit/api/quotes");
-		const data = await response.json();
-		
-		this.setState({
+		try {
+			const response = await fetch("https://type.fit/api/quotes");
+			const data = await response.json();
+
+			this.setState({
 			quotes: data
 			
 		})
-		
-		//const quotetext = document.getElementById("text");
-		//quotetext.innerText = this.state.quotes[0].text; 
 		this.newQuote();
+		
+		}catch(err){
+			console.log(err);
+		}
+		
+		
 
 	}
 
 	newQuote = () => {
 		let quoteIndex = Math.floor(Math.random() * this.state.quotes.length)
+
 		let randomQuote = this.state.quotes[quoteIndex];
 		
+		//const {text, author} = this.state.quotes[quoteIndex];
+		//this.setState({newQuote: text, author: author})
+		console.log(randomQuote.text);
 		this.setState({newQuote: randomQuote.text, author: randomQuote.author})
 	}
 
@@ -46,6 +52,7 @@ class  App extends Component {
 	}
 
   render() {
+
   	
     return (
     <div className="container"> 
